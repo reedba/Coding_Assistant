@@ -1,5 +1,6 @@
 import os
 import gradio as gr
+from dotenv import load_dotenv
 import faiss
 import pickle
 from langchain.embeddings.openai import OpenAIEmbeddings
@@ -7,9 +8,14 @@ from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.llms import OpenAI
 
+load_dotenv()
+
 # Configuration
-OPENAI_API_KEY = "your-openai-api-key"  # Replace with your OpenAI key
-PROJECT_DIRS = ["your_frontend_directory", "your_backend_directory"]  # Update with your paths
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+PROJECT_DIRS = [
+    "C:\\Users\\brand\\OneDrive\\Desktop\\AI_Projects\\Sped_Assistant_FastAPI",
+    "C:\\Users\\brand\\OneDrive\\Desktop\\AI_Projects\\Sped_Assistant_React"
+]
 DB_PATH = "vector_db"  # Where FAISS stores embeddings
 
 # Initialize OpenAI LLM
